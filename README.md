@@ -1,3 +1,3 @@
 # Demo
 
-Learning Git. 
+Learning Git using this repo !
