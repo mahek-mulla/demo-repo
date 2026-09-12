@@ -1,5 +1,8 @@
 pipeline {
-    agent {docker { image 'alpine:latest' }}
+    agent any
+    environment {
+       MY_SECRET = credentials('test-secret')
+   }
 
     stages {
         stage('Checkout') {
@@ -17,6 +20,11 @@ pipeline {
                 sh 'echo Running tests...'
             }
         }
+        stage('Test secret') {
+           steps {
+               sh 'echo "The secret is: $MY_SECRET ......technically should not be visible"'
+       }
+   }
     }
 
     post {
